@@ -1,0 +1,230 @@
+{
+  "Version": 3,
+  "FileReferences": {
+    "Moc": "qiye_9.moc3",
+    "Textures": [
+      "textures/texture_00.png"
+    ],
+    "Physics": "qiye_9.physics3.json",
+    "Motions": {
+      "Idle": [
+        {
+          "Name": "idle",
+          "File": "motions/idle.motion3.json"
+        }
+      ],
+      "TapSpecial": [
+        {
+          "Name": "touch_special",
+          "File": "motions/touch_special.motion3.json"
+        }
+      ],
+      "TapBody": [
+        {
+          "Name": "touch_body",
+          "File": "motions/touch_body.motion3.json"
+        },
+        {
+          "Name": "login",
+          "File": "motions/login.motion3.json"
+        },
+        {
+          "Name": "touch_drag1",
+          "File": "motions/touch_drag1.motion3.json"
+        },
+        {
+          "Name": "touch_drag2",
+          "File": "motions/touch_drag2.motion3.json"
+        },
+        {
+          "Name": "touch_drag3",
+          "File": "motions/touch_drag3.motion3.json"
+        },
+        {
+          "Name": "touch_drag4",
+          "File": "motions/touch_drag4.motion3.json"
+        },
+        {
+          "Name": "touch_drag5",
+          "File": "motions/touch_drag5.motion3.json"
+        },
+        {
+          "Name": "touch_drag6",
+          "File": "motions/touch_drag6.motion3.json"
+        },
+        {
+          "Name": "touch_drag7",
+          "File": "motions/touch_drag7.motion3.json"
+        },
+        {
+          "Name": "touch_drag8",
+          "File": "motions/touch_drag8.motion3.json"
+        },
+        {
+          "Name": "touch_drag9",
+          "File": "motions/touch_drag9.motion3.json"
+        },
+        {
+          "Name": "touch_drag10",
+          "File": "motions/touch_drag10.motion3.json"
+        },
+        {
+          "Name": "complete",
+          "File": "motions/complete.motion3.json"
+        },
+        {
+          "Name": "home",
+          "File": "motions/home.motion3.json"
+        },
+        {
+          "Name": "main_1",
+          "File": "motions/main_1.motion3.json"
+        },
+        {
+          "Name": "main_2",
+          "File": "motions/main_2.motion3.json"
+        },
+        {
+          "Name": "main_3",
+          "File": "motions/main_3.motion3.json"
+        },
+        {
+          "Name": "mission",
+          "File": "motions/mission.motion3.json"
+        },
+        {
+          "Name": "mission_complete",
+          "File": "motions/mission_complete.motion3.json"
+        }
+      ],
+      "TapHead": [
+        {
+          "Name": "touch_head",
+          "File": "motions/touch_head.motion3.json"
+        },
+        {
+          "Name": "touch_idle1",
+          "File": "motions/touch_idle1.motion3.json"
+        },
+        {
+          "Name": "touch_idle2",
+          "File": "motions/touch_idle2.motion3.json"
+        },
+        {
+          "Name": "touch_idle3",
+          "File": "motions/touch_idle3.motion3.json"
+        },
+        {
+          "Name": "touch_idle4",
+          "File": "motions/touch_idle4.motion3.json"
+        },
+        {
+          "Name": "touch_idle5",
+          "File": "motions/touch_idle5.motion3.json"
+        },
+        {
+          "Name": "touch_idle6",
+          "File": "motions/touch_idle6.motion3.json"
+        },
+        {
+          "Name": "touch_idle7",
+          "File": "motions/touch_idle7.motion3.json"
+        },
+        {
+          "Name": "touch_idle8",
+          "File": "motions/touch_idle8.motion3.json"
+        },
+        {
+          "Name": "touch_idle9",
+          "File": "motions/touch_idle9.motion3.json"
+        },
+        {
+          "Name": "touch_idle10",
+          "File": "motions/touch_idle10.motion3.json"
+        },
+        {
+          "Name": "touch_idle11",
+          "File": "motions/touch_idle11.motion3.json"
+        },
+        {
+          "Name": "touch_idle12",
+          "File": "motions/touch_idle12.motion3.json"
+        },
+        {
+          "Name": "touch_idle13",
+          "File": "motions/touch_idle13.motion3.json"
+        },
+        {
+          "Name": "touch_idle14",
+          "File": "motions/touch_idle14.motion3.json"
+        },
+        {
+          "Name": "touch_idle15",
+          "File": "motions/touch_idle15.motion3.json"
+        },
+        {
+          "Name": "touch_idle16",
+          "File": "motions/touch_idle16.motion3.json"
+        },
+        {
+          "Name": "touch_idle17",
+          "File": "motions/touch_idle17.motion3.json"
+        },
+        {
+          "Name": "touch_idle18",
+          "File": "motions/touch_idle18.motion3.json"
+        },
+        {
+          "Name": "touch_idle19",
+          "File": "motions/touch_idle19.motion3.json"
+        },
+        {
+          "Name": "touch_idle20",
+          "File": "motions/touch_idle20.motion3.json"
+        },
+        {
+          "Name": "complete",
+          "File": "motions/complete.motion3.json"
+        }
+      ]
+    },
+    "Expressions": []
+  },
+  "HitAreas": [
+    {
+      "Name": "Body",
+      "Id": "TouchBody",
+      "Order": 2,
+      "Motion": "TapBody"
+    },
+    {
+      "Name": "Special",
+      "Id": "TouchSpecial",
+      "Order": 3,
+      "Motion": "TapSpecial"
+    },
+    {
+      "Name": "Head",
+      "Id": "TouchHead",
+      "Order": 1,
+      "Motion": "TapHead"
+    }
+  ],
+  "Groups": [
+    {
+      "Target": "Parameter",
+      "Name": "EyeBlink",
+      "Ids": [
+        "ParamEyeLOpen",
+        "ParamEyeROpen"
+      ]
+    },
+    {
+      "Target": "Parameter",
+      "Name": "LipSync",
+      "Ids": [
+        "ParamMouthOpenY"
+      ]
+    }
+  ]
+}
