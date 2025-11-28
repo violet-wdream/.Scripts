@@ -63,9 +63,11 @@
 
 4. `DelFakeHeader.py`： 删除FakeHeader。
 
-5. `DelSufFiles(.pvr.ccz+...).py`：删除特定后缀的文件，可自定义
+5. `DelOtherModelJson (LPKAssets).py`: 有的LPK解压后的模型会有很多model.json实际上只需要保留和atals匹配的model.json即可。用于处理战姬收藏的LPK解包。
 
-6. `ExtractSecondaryFiles.py`：提取脚本目录的其他目录的所有递归子目录文件，注意脚本放置的位置！！！
+6. `DelSufFiles(.pvr.ccz+...).py`：删除特定后缀的文件，可自定义
+
+7. `ExtractSecondaryFiles.py`：提取脚本目录的其他目录的所有递归子目录文件，注意脚本放置的位置！！！
 
    ```
    Before:
@@ -94,15 +96,15 @@
 
    
 
-7. `DelDirSuf(.unity3d_export)&MvCAB`：删除所有的目录特定后缀（.unity3d_export），可自定义，同时将下一级CAB目录的内容移到上一级。
+8. `DelDirSuf(.unity3d_export)&MvCAB`：删除所有的目录特定后缀（.unity3d_export），可自定义，同时将下一级CAB目录的内容移到上一级。
 
-8. `DelDirSuf(_res_export)&MvCAB`：同理。
+9. `DelDirSuf(_res_export)&MvCAB`：同理。
 
-9. `DelErrorEmptyDir(Drag File)`：有时候会莫名生成空的目录，然后删不掉，就把目录拖到这个bat上删除，注意：这个删除方式不会放到回收站。
+10. `DelErrorEmptyDir(Drag File)`：有时候会莫名生成空的目录，然后删不掉，就把目录拖到这个bat上删除，注意：这个删除方式不会放到回收站。
 
-10. `DelFileSuf(.asset)`：删除所有文件的后缀.asset
+11. `DelFileSuf(.asset)`：删除所有文件的后缀.asset
 
-11. `DelFileSuf(.prefab)`：同理删除所有文件的后缀.prefab
+12. `DelFileSuf(.prefab)`：同理删除所有文件的后缀.prefab
 
-12. 
+13. 
 
