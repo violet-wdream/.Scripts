@@ -230,14 +230,25 @@ class LpkLoader():
             logger.debug(f"{name} -> {val}")
             # extract submodel
             if (name.lower().endswith("_command") or name.lower().endswith("_postcommand")) and val:
-                commands = val.split(";")
+                commands = [c.strip() for c in val.split(";") if c.strip()]
                 for cmd in commands:
+                    lower_cmd = cmd.lower()
+
+                    if lower_cmd.startswith("change_model"):
+                        target = cmd[len("change_model"):].strip().strip('\"\'')
+                        if target:
+                            target = target.split()[0]
+                        fallback = find_encrypted_file(cmd)
+                        target_file = target if target else fallback
+                        if target_file:
+                            self.extract_model_json(target_file, dir)
+                            continue
+
                     enc_file = find_encrypted_file(cmd)
                     if enc_file == None:
                         continue
 
-                    if cmd.startswith("change_cos"):
-                        enc_file = find_encrypted_file(cmd)
+                    if lower_cmd.startswith("change_cos"):
                         self.extract_model_json(enc_file, dir)
                     else:
                         name += f"_{id}"

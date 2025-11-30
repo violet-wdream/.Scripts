@@ -67,7 +67,9 @@
 
 6. `DelSufFiles(.pvr.ccz+...).py`：删除特定后缀的文件，可自定义
 
-7. `ExtractSecondaryFiles.py`：提取脚本目录的其他目录的所有递归子目录文件，注意脚本放置的位置！！！
+7. `ExtractAllSubFiles.py`：提取当前目录以及子目录下的所有文件到_extracted_files目录下。
+
+8. `ExtractSecondaryFiles.py`：当前目录下的所有纯文件目录会被往上提取（到父级目录）。
 
    ```
    Before:
@@ -96,15 +98,15 @@
 
    
 
-8. `DelDirSuf(.unity3d_export)&MvCAB`：删除所有的目录特定后缀（.unity3d_export），可自定义，同时将下一级CAB目录的内容移到上一级。
+9. `DelDirSuf(.unity3d_export)&MvCAB`：删除所有的目录特定后缀（.unity3d_export），可自定义，同时将下一级CAB目录的内容移到上一级。
 
-9. `DelDirSuf(_res_export)&MvCAB`：同理。
+10. `DelDirSuf(_res_export)&MvCAB`：同理。
 
-10. `DelErrorEmptyDir(Drag File)`：有时候会莫名生成空的目录，然后删不掉，就把目录拖到这个bat上删除，注意：这个删除方式不会放到回收站。
+11. `DelErrorEmptyDir(Drag File)`：有时候会莫名生成空的目录，然后删不掉，就把目录拖到这个bat上删除，注意：这个删除方式不会放到回收站。
 
-11. `DelFileSuf(.asset)`：删除所有文件的后缀.asset
+12. `DelFileSuf(.asset)`：删除所有文件的后缀.asset
 
-12. `DelFileSuf(.prefab)`：同理删除所有文件的后缀.prefab
+13. `DelFileSuf(.prefab)`：同理删除所有文件的后缀.prefab
 
-13. 
+14. 
 
