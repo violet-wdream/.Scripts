@@ -5,12 +5,46 @@
 ## Decrypt
 
 1. `DecryptPng(DAT_0180ac00-UF-Echocalypse)`： 绯色回响 图片加密处理（图片16进制打开有UF关键字），需要先下载TexturePacker（激活），然后加入到**环境变量**，通过将加密的png图片转换为.pvr.ccz文件再用TexturePacker转换回png。
+
 2. `DecryptXOR`/`DecryptXORTest`： 功能一致，Test是前者的完全版，检测Bundle文件的异或加密种类，可以尝试更多种类的XOR加密，用于处理unity资源的XOR加密。
+
 3. `Decrypt64B-XOR(GirlsLoveDance)`：处理 千娇百媚 的文件前64个字节XOR加密
+
 4. `WPKUnpacker.py`：解密WPK文件，通常会得到LPK、config、png；调用了本地bandizip进行解压，使用了bandizip6.29的bc.exe命令行工具，高级版本为bz.exe，需要把bc添加到环境变量
+
 5. `LPKUnpacker.py`：解密LPK文件，需要配合config.json文件一起使用；支持Live2D和Spine 
+
 6. `YooAssetUnpacker.py`：用于处理Unity的YooAsset资产框架解密。经典目录结构就是Package目录下有ManifestFiles和CacheBundleFiles，处理完之后就是正常的unity文件
-7. 
+
+7. 1
+
+
+
+## CherryTale
+
+用下载器下载的资源会自动解密。
+
+下载器是编译好的版本，来自[CherryTale_AssetDecDL](https://github.com/28598519a/CherryTale_AssetDecDL/tree/main)
+
+PC端清单`index_save.txt`路径`.\AppData\LocalLow\SuperHGame\Cherry Tale\Patch`
+
+移动端应该类似，可能在`/data/usr/0`里面
+
+1. `CherryTaleDecrypt.py`：需要把资源放在input目录，然后创建一个空的output目录，只用于樱境物语解密资源
+
+      ```python
+      python CherryTaleDecrypt.py input output
+      ```
+
+2. `CatalogJsonDiff.py`：可以比较两个json文件的键差异并输出这些差异键以及对应的值。因为通常资源清单更新的文件是新的键，所以更新资源只需要下载这些更新的键即可，不需要再次下载完整的资源。对于樱境物语，只需要比较两个不同时间段的index_save.txt（实际为json格式），然后把结果输出到一个新的index.txt，你可以把2024.6.3得到的清单命名为2024.6.3.json，2025.12.1得到的命名为2025.12.1.json，然后用这个脚本运行，会自动输出一个`index.update-20251201_130906.txt`类似的文件，然后再用下载器下载这个文件清单记载的文件。
+
+   ```python
+   python CatalogJsonDiff.py 2024.6.3.json 2025.12.1.json
+   ```
+
+3. `CherryTaleDownloader.exe`：选择index.txt进行下载，下载失败的文件会输出到`404.log`日志里面
+
+4. `TryDownLoadError.py`：默认读取`404.log`进行重新下载。注意这里下载的是未解密的源文件，需要再使用解密脚本处理。
 
 ## DestinyChild
 
