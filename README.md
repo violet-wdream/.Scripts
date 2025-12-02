@@ -105,6 +105,10 @@ PC端清单`index_save.txt`路径`.\AppData\LocalLow\SuperHGame\Cherry Tale\Patc
 
 8. `ExtractSecondaryFiles.py`：当前目录下的所有纯文件目录会被往上提取（到父级目录）。
 
+   注意脚本使用目录位置：
+
+   ![image-20251202180654156](https://cdn.jsdelivr.net/gh/violet-wdream/Drawio/PNG/202512021806190.png)
+
    ```
    Before:
    根目录/
