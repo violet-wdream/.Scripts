@@ -4,19 +4,25 @@
 
 ## Decrypt
 
-1. `DecryptPng(DAT_0180ac00-UF-Echocalypse)`： 绯色回响 图片加密处理（图片16进制打开有UF关键字），需要先下载TexturePacker（激活），然后加入到**环境变量**，通过将加密的png图片转换为.pvr.ccz文件再用TexturePacker转换回png。
+1. `DecryptPng(DAT_0180ac00-UF-Echocalypse).py`： 绯色回响 图片加密处理（图片16进制打开有UF关键字），需要先下载TexturePacker（激活），然后加入到**环境变量**，通过将加密的png图片转换为.pvr.ccz文件再用TexturePacker转换回png。
 
-2. `DecryptXOR`/`DecryptXORTest`： 功能一致，Test是前者的完全版，检测Bundle文件的异或加密种类，可以尝试更多种类的XOR加密，用于处理unity资源的XOR加密。
+2. `DecryptUF.py`：同上，但是集成了解密功能，不需要下载TP以及环境，输入两个参数输入目录和输出目录不指定就是直接替换原文件
 
-3. `Decrypt64B-XOR(GirlsLoveDance)`：处理 千娇百媚 的文件前64个字节XOR加密
+   ```python
+   python DecryptUF.py . .
+   ```
 
-4. `WPKUnpacker.py`：解密WPK文件，通常会得到LPK、config、png；调用了本地bandizip进行解压，使用了bandizip6.29的bc.exe命令行工具，高级版本为bz.exe，需要把bc添加到环境变量
+3. `DecryptXOR.py`/`DecryptXORTest.py`： 功能一致，Test是前者的完全版，检测Bundle文件的异或加密种类，可以尝试更多种类的XOR加密，用于处理unity资源的XOR加密。
 
-5. `LPKUnpacker.py`：解密LPK文件，需要配合config.json文件一起使用；支持Live2D和Spine 
+4. `Decrypt64B-XOR(GirlsLoveDance).py`：处理 千娇百媚 的文件前64个字节XOR加密
 
-6. `YooAssetUnpacker.py`：用于处理Unity的YooAsset资产框架解密。经典目录结构就是Package目录下有ManifestFiles和CacheBundleFiles，处理完之后就是正常的unity文件
+5. `WPKUnpacker.py`：解密WPK文件，通常会得到LPK、config、png；调用了本地bandizip进行解压，使用了bandizip6.29的bc.exe命令行工具，高级版本为bz.exe，需要把bc添加到环境变量
 
-7. 1
+6. `LPKUnpacker.py`：解密LPK文件，需要配合config.json文件一起使用；支持Live2D和Spine 
+
+7. `YooAssetUnpacker.py`：用于处理Unity的YooAsset资产框架解密。经典目录结构就是Package目录下有ManifestFiles和CacheBundleFiles，处理完之后就是正常的unity文件
+
+8. 1
 
 
 
