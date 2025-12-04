@@ -24,6 +24,28 @@
 
 8. 1
 
+## ArkRecode
+
+星陨计划下载脚本，无加密。
+
+1. `CatalogCatcher.py`：执行后会自动下载最新的catalog清单。
+
+2. `CatalogComparer.py`：比较两个新旧两个版本的catalog清单，获取更新条目，输出到当前目录下`catalog_107966-time.json`，time是时间戳。
+
+   ```python
+   python CatalogComparer.py catalog_107965.json catalog_107966.json
+   ```
+
+   
+
+3. `UpdateDownloader.py`：输入更新清单自动下载输出到output目录下，下载失败的URL输出到404.log
+
+   ```python
+   python UpdateDownloader.py catalog_107966-time.json
+   ```
+
+4. 
+
 
 
 ## CherryTale
@@ -51,6 +73,10 @@ PC端清单`index_save.txt`路径`.\AppData\LocalLow\SuperHGame\Cherry Tale\Patc
 3. `CherryTaleDownloader.exe`：选择index.txt进行下载，下载失败的文件会输出到`404.log`日志里面
 
 4. `TryDownLoadError.py`：默认读取`404.log`进行重新下载。注意这里下载的是未解密的源文件，需要再使用解密脚本处理。
+
+
+
+
 
 ## DestinyChild
 
