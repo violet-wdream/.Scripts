@@ -109,7 +109,8 @@ PC端清单`index_save.txt`路径`.\AppData\LocalLow\SuperHGame\Cherry Tale\Patc
 ## Png
 
 1. `AtlasPngResize.py`：根据atlas文件中的尺寸来调节实际png的尺寸。
-2. ``
+2. `MergePngAlpha.py`：搜索alpha通道图片，找到后在该目录下寻找寻找进行合并，合并成功后删除alpha图片，需要PIL库。
+3. 
 
 ## Sort
 
@@ -178,5 +179,7 @@ PC端清单`index_save.txt`路径`.\AppData\LocalLow\SuperHGame\Cherry Tale\Patc
 
 13. `DelFileSuf(.prefab)`：同理删除所有文件的后缀.prefab
 
-14. 
+14. `DelTargeNameFiles.py`：删除指定名称（包括拓展名）的文件，内部指定/修改。
+
+15. 
 
