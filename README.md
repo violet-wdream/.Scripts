@@ -22,7 +22,7 @@
 
 7. `YooAssetUnpacker.py`：用于处理Unity的YooAsset资产框架解密。经典目录结构就是Package目录下有ManifestFiles和CacheBundleFiles，处理完之后就是正常的unity文件
 
-8. 1
+8. `DecryptOrisries.py`：用于处理万源圣魔录得资源加密，处理后输出到decrypted目录下。
 
 ## ArkRecode
 
