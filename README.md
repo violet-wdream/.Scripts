@@ -24,6 +24,8 @@
 
 8. `DecryptOrisries.py`：用于处理万源圣魔录得资源加密，处理后输出到decrypted目录下。
 
+9. `LZ4Dec.py`：用于LZ4解压，需要参数指定文件，解压后输出txt
+
 ## ArkRecode
 
 星陨计划下载脚本，无加密。
@@ -105,6 +107,22 @@ PC端清单`index_save.txt`路径`.\AppData\LocalLow\SuperHGame\Cherry Tale\Patc
 4. `ProcessModel3(ForAzurLane).py`：个人使用的工具，功能同上。用来处理碧蓝的的模型配置model3
 
 5. 
+
+
+
+## HouChiShouJo
+
+1. `FetchAbfilesList.py`：获取最新的资产清单并进行LZ4解压为txt。
+
+2. `AbfilesComparer.py`：输入参数1旧清单txt，参数2新清单txt，输出更新的文件的URL
+
+   如果想获取完整的下载URL，可以只输入一个参数即需要下载的清单。
+
+3. `Downloader.py`：读取txt批量下载URL，多线程可配置，输出到output
+
+4. 
+
+
 
 ## Png
 
