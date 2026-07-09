@@ -2,6 +2,8 @@
 # fade 之前的 "ParameterIdHashes" 被改为 "ControlIds", 正好解决了之前 hash 无法还原为参数名的问题
 # 目前猜测这里的 ControlIds 可能是索引, 然后通过参数列表还原为参数名
 # 不过之前恰好做过解析 moc3 得到参数列表的工作
+
+# References:
 # https://github.com/aelurum/AssetStudio/blob/AssetStudioMod/AssetStudioUtility/CubismLive2DExtractor/Live2DExtractor.cs
 # https://github.com/aelurum/AssetStudio/blob/AssetStudioMod/AssetStudioUtility/CubismLive2DExtractor/CubismMotion3Json.cs#L101
 import ctypes

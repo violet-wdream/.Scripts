@@ -7,6 +7,7 @@ from pathlib import Path
 
 TEST_FILE = r"C:\Users\86182\Downloads\HOTD.wasm.unityweb"
 # GZIP
+# 1F 8B 08
 def is_gzip(data: bytes) -> bool:
     return data.startswith(b'\x1f\x8b\x08')
 def gzip_decompress_file(file_path: Path) -> bytes:
@@ -31,8 +32,9 @@ def gzip_decompress_data(compressed_data: bytes) -> bytes:
         return compressed_data
 
 # ZLIB
+# 78 9C
 def try_zlib(data: bytes) -> bytes:
-    if not data.startswith(b'\x78\xDA'):
+    if not data.startswith(b'\x78\x9C'):
         print("Not zlib data")
         return data
     try:
@@ -41,6 +43,8 @@ def try_zlib(data: bytes) -> bytes:
         return data
 
 #LZMA
+    # FORMAT_XZ FD 37 7A
+    # FORMAT_ALONE 5D 00 00
 def try_lzma(data: bytes) -> bytes:
     try:
         return lzma.decompress(data)

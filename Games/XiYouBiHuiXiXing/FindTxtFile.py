@@ -2,7 +2,6 @@ import os
 import shutil
 import re
 
-# 你的路径（已适配正斜杠）
 source_path = r"C:/Users/86182/Downloads/bundles"
 output_path = os.path.join(source_path, "identified_txt")
 

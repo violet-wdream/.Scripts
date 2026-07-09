@@ -7,7 +7,7 @@ from typing import List, Optional, Tuple, Dict, Any
 import struct
 from dataclasses import dataclass, asdict
 
-
+# https://github.com/PackageInstaller/Script/tree/master/YooAsset
 MANIFEST_FILE_SIGN = 0x594F4F  # YOO
 BUILDIN_CATALOG_FILE_SIGN = 0x133C5EE  # BuildinCatalog
 SUPPORTED_VERSIONS = ["1.5.2", "2.0.0", "2.3.1", "2025.8.28", "2025.9.30"]
@@ -674,7 +674,8 @@ def extract_hotfix_assets(root_path: Path, bytes_files: List[Path], output_dir: 
 
 def main():
 
-    input_path = Path(r"D:\Tools\UsefulTools\MuMu\Shared\Download\Last")
+    input_path = Path(r"D:\Tools\UsefulTools\MuMu\Shared\Download\HuiJin")
+    output_dir = Path(r"D:\Tools\UsefulTools\MuMu\Shared\Download\HuiJin\out")
 
     if not input_path.exists() or not input_path.is_dir():
         print(f"错误: 输入目录 '{input_path}' 不存在或不是目录")
@@ -686,8 +687,6 @@ def main():
         print("未找到 .bytes 文件")
         sys.exit(1)
 
-    script_dir = Path(__file__).parent
-    output_dir = script_dir
 
     if asset_type == "apk":
         print(f"检测到: APK 资产 ({len(bytes_files)} 个清单文件)")
