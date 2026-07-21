@@ -1,4 +1,5 @@
 # 懒得写README了，可能有变化，使用前请参考llm的意见或者代码注释
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/violet-wdream/.Scripts)
 
 
 执行默认在  脚本当前目录以及根目录下，自动搜索对应文件，理论上只需要执行而不需要添加参数。
