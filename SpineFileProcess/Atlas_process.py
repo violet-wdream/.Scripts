@@ -61,6 +61,19 @@ class AtlasInfo:
             return None
         return self.pages[index]
 
+    def get_page_names(self) -> list[str]:
+        return [page.name for page in self.pages]
+
+    def set_page_name(self, old_name: str, new_name: str):
+        page = self.get_page_by_name(old_name)
+        if page is not None:
+            page.set_name(new_name)
+
+    def set_index_page_name(self, index: int, new_name: str):
+        page = self.get_page_by_index(index)
+        if page is not None:
+            page.set_name(new_name)
+
     def get_region_by_name(self, name: str) -> RegionInfo | None:
         for page in self.pages:
             region = page.get_region_by_name(name)
@@ -69,14 +82,12 @@ class AtlasInfo:
         print(f"Region {name} not found in atlas")
         return None
 
-    def set_page_name(self, old_name: str, new_name: str):
-        page = self.get_page_by_name(old_name)
-        if page is not None:
-            page.set_name(new_name)
-    def set_index_page_name(self, index: int, new_name: str):
-        page = self.get_page_by_index(index)
-        if page is not None:
-            page.set_name(new_name)
+    def get_region_names(self) -> list[str]:
+        names = []
+        for page in self.pages:
+            for region in page.regions:
+                names.append(region.name)
+        return names
 
 def read_value(s: str) -> str:
     return s.split(":", 1)[1].strip()
@@ -87,6 +98,7 @@ def read_tuple(s: str) -> tuple[str, str]:
     tup = read_value(s)
     a, b = tup.split(",")
     return a.strip(), b.strip()
+
 def read_tuple_int(s: str) -> tuple[int, int]:
     a, b = read_tuple(s)
     return int(a), int(b)
@@ -95,56 +107,84 @@ def deserialize_atlas(atlas_name: str, text: str) -> AtlasInfo:
     lines = [line.replace('\r', '') for line in text.split('\n')]
     i: int = 0
     pages: list[PageInfo] = []
+
     while i < len(lines):
-        line = lines[i]
+        line = lines[i].strip()
         if line.strip() == "":
             i += 1
             continue
-        page_name: str = line.strip().split(".")[0]  # 去掉扩展名
-        i += 1
-        size: tuple[int,int] = read_tuple_int(lines[i])
-        i += 1
-        fmt: str = read_value(lines[i])
-        i += 1
-        ftr: tuple[str, str] = read_tuple(lines[i])
-        i += 1
-        repeat: str = read_value(lines[i])
-        i += 1
 
-        regions: list[RegionInfo] = []
-        while i < len(lines):
-            line = lines[i]
-            if not line.strip():
-                break  # 遇到空行意味着这页结束
-            if ":" not in line:
-                region_name = line.strip()
+        if ".png" in line or ".webp" in line:
+            page_name: str = line.strip()
+            i += 1
+
+            size: tuple[int, int] = (0, 0)
+            fmt: str = ""
+            ftr: tuple[str, str] = ("", "")
+            repeat: str = ""
+            if "size" in lines[i]:
+                size = read_tuple_int(lines[i])
                 i += 1
-                while i < len(lines) and ":" in lines[i]:
-                    rot: bool = read_value(lines[i]) == "true"
-                    i += 1
-                    xy: tuple[int,int] = read_tuple_int(lines[i])
-                    i += 1
-                    size: tuple[int,int] = read_tuple_int(lines[i])
-                    i += 1
-                    orig: tuple[int,int] = read_tuple_int(lines[i])
-                    i += 1
-                    offset: tuple[int,int] = read_tuple_int(lines[i])
-                    i += 1
-                    index: int = read_value_int(lines[i])
-                    i += 1
-                    region = RegionInfo(
-                        name=region_name, rotate=rot, xy=xy,
-                        size=size, orig=orig,
-                        offset=offset, index=index
-                    )
-                    regions.append(region)
-            else:
+            if "format" in lines[i]:
+                fmt = read_value(lines[i])
                 i += 1
-        page = PageInfo(
-            name=page_name, size=size, fmt=fmt, ftr=ftr,
-            repeat=repeat, regions=regions
-        )
-        pages.append(page)
+            if "filter" in lines[i]:
+                ftr = read_tuple(lines[i])
+                i += 1
+            if "repeat" in lines[i]:
+                repeat = read_value(lines[i])
+                i += 1
+
+            regions: list[RegionInfo] = []
+            while i < len(lines):
+                line = lines[i]
+                if line.strip() == "" or ".png" in line or ".webp" in line:
+                    break  # 这页结束
+
+                if ":" not in line:
+                    region_name = line.strip()
+                    i += 1
+
+                    rot: bool = False
+                    xy: tuple[int,int] = (0, 0)
+                    size: tuple[int,int] = (0, 0)
+                    orig: tuple[int,int] = (0, 0)
+                    offset: tuple[int,int] = (0, 0)
+                    index: int = 0
+
+                    while i < len(lines) and ":" in lines[i]:
+                        if "rotate" in lines[i]:
+                            rot = read_value(lines[i]) == "true"
+                            i += 1
+                        if "xy" in lines[i]:
+                            xy = read_tuple_int(lines[i])
+                            i += 1
+                        if "size" in lines[i]:
+                            size = read_tuple_int(lines[i])
+                            i += 1
+                        if "orig" in lines[i]:
+                            orig = read_tuple_int(lines[i])
+                            i += 1
+                        if "offset" in lines[i]:
+                            offset = read_tuple_int(lines[i])
+                            i += 1
+                        if "index" in lines[i]:
+                            index = read_value_int(lines[i])
+                            i += 1
+
+                        region = RegionInfo(
+                            name=region_name, rotate=rot, xy=xy,
+                            size=size, orig=orig,
+                            offset=offset, index=index
+                        )
+                        regions.append(region)
+                else:
+                    i += 1
+            page = PageInfo(
+                name=page_name, size=size, fmt=fmt, ftr=ftr,
+                repeat=repeat, regions=regions
+            )
+            pages.append(page)
     atlas_info = AtlasInfo(name=atlas_name, pages=pages)
 
     return atlas_info
@@ -154,10 +194,10 @@ def serialize_atlas(atlas: AtlasInfo) -> str:
 
     for p_idx, page in enumerate(atlas.pages):
         lines.append("")  # 不同的页之间用空行分割
-        lines.append(f"{page.name}.{IMAGE_EXT}")
-        lines.append(f"size: {page.size[0]},{page.size[1]}")  #注意这里,没有空格
+        lines.append(f"{page.name.split('.')[0]}.{IMAGE_EXT}")
+        lines.append(f"size: {page.size[0]},{page.size[1]}")  #注意这里,没有空格!!!
         lines.append(f"format: {page.fmt}")
-        lines.append(f"filter: {page.ftr[0]}, {page.ftr[1]}")
+        lines.append(f"filter: {page.ftr[0]},{page.ftr[1]}")  #注意这里,没有空格!!!
         lines.append(f"repeat: {page.repeat}")
 
         for region in page.regions:

@@ -3,27 +3,26 @@ import os
 from pathlib import Path
 
 # ===== 配置 =====
-ROOT_DIR = r"D:\Tools\UsefulTools\MuMu\Shared\Download\Zgirls3\res\import"   # 指定搜索目录
+ROOT_DIR = r"D:\Tools\UsefulTools\MuMu\Shared\Download\illusionConnectRe"   # 指定搜索目录
 TOP_N = 10               # 取前 N 个最大文件
 EXCLUDE_EXTENSIONS = ['.png', '.jpg', '.webp', '.astc', '.mp3', '.mp4', '.ttf', '.binary']  # 要排除的文件后缀
+INCLUDE_EXTENSIONS = ['.zip']
 
-def top_n_files_by_size(root, n, exclude_ext=None):
-    if exclude_ext is None:
-        exclude_ext = []
-    
-    # 确保后缀格式一致（以点开头，小写）
-    exclude_ext = [ext.lower() if ext.startswith('.') else f'.{ext.lower()}' for ext in exclude_ext]
-    
+def top_n_files_by_size(root, n):
+
     files = []
 
     for dirpath, _, filenames in os.walk(root):
         for name in filenames:
             path = Path(dirpath) / name
             
-            # 检查后缀是否在排除列表中
-            if exclude_ext:
+            if EXCLUDE_EXTENSIONS:
                 ext = path.suffix.lower()
-                if ext in exclude_ext:
+                if ext in EXCLUDE_EXTENSIONS:
+                    continue
+            if INCLUDE_EXTENSIONS:
+                ext = path.suffix.lower()
+                if ext not in INCLUDE_EXTENSIONS:
                     continue
             
             try:
@@ -40,9 +39,11 @@ if __name__ == "__main__":
     print(f"最大文件数: {TOP_N}")
     if EXCLUDE_EXTENSIONS:
         print(f"排除的后缀: {', '.join(EXCLUDE_EXTENSIONS)}")
+    if INCLUDE_EXTENSIONS:
+        print(f"包含的后缀: {', '.join(INCLUDE_EXTENSIONS)}")
     print("-" * 80)
     
-    results = top_n_files_by_size(ROOT_DIR, TOP_N, EXCLUDE_EXTENSIONS)
+    results = top_n_files_by_size(ROOT_DIR, TOP_N)
     
     if results:
         for i, (path, size) in enumerate(results, 1):

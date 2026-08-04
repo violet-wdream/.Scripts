@@ -3,15 +3,11 @@ from pathlib import Path
 from typing import Pattern, List
 
 # ====== 可配置区域 / Configurable Area ======
-INPUT_PATH = r"D:\Tools\UsefulTools\MuMu\Shared\Download\Zgirls3\res"
+INPUT_PATH = r"D:\Tools\UsefulTools\MuMu\Shared\Download\DaoYou"
 
-spine_json_pattern: Pattern = re.compile(r'"skeleton"\s*:\s*\{', re.IGNORECASE)
+skel_pattern = re.compile(rb'\x07\d\.\d\.\d{1,2}')
 
-spine_skel_pattern: Pattern = re.compile(rb"\d+\.\d+\.\d+")
-
-spine_atlas_pattern: Pattern = re.compile(r"^size:\s*\d+\s*,\s*\d+\s*$", re.I | re.MULTILINE)
-
-key_words = ["Version",]
+key_words = ["SkeletonAnimation.create"]
 
 def search(directory: str) -> List[Path]:
     """Recursively searches the directory and returns a list of all files."""
@@ -29,63 +25,30 @@ def search(directory: str) -> List[Path]:
 
 
 def is_spine_json(file_path: Path) -> bool:
-    try:
-        # Read as text. Limit to 4096 chars since the skeleton block is usually at the top.
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read(4096)
-            if spine_json_pattern.search(content):
-                print(f"[SpineJson] {file_path}")
-                return True
-    except (UnicodeDecodeError, PermissionError):
-        # Ignore files that aren't valid UTF-8 (like PNGs or SKELs) or can't be read
-        pass
-    except Exception as e:
-        print(f"Error reading {file_path}: {e}")
+    if b'"skeleton":' in file_path.read_bytes():
+        print(f"[SpineJson] {file_path}")
+        return True
     return False
 
 
 def is_spine_skel(file_path: Path) -> bool:
-    try:
-        if file_path.suffix.lower() == ".ogg" or file_path.suffix.lower() == ".mp4":
-            return False
-        # Read as binary. Limit to 1024 bytes since the version string is at the beginning.
-        with open(file_path, 'rb') as f:
-            content = f.read(1024)
-            if spine_skel_pattern.search(content):
-                print(f"[SpineSkel] {file_path}")
-                return True
-    except PermissionError:
-        pass
-    except Exception as e:
-        print(f"Error reading {file_path}: {e}")
+    if skel_pattern.search(file_path.read_bytes()):
+        print(f"[SpineSkel] {file_path}")
+        return True
     return False
 
 
 def is_spine_atlas(file_path: Path) -> bool:
-    try:
-        # Read as text. Limit to 4096 chars.
-        with open(file_path, 'r', encoding='utf-8') as f:
-            content = f.read(4096)
-            if spine_atlas_pattern.search(content):
-                print(f"[SpineAtlas] {file_path}")
-                return True
-    except (UnicodeDecodeError, PermissionError):
-        pass
-    except Exception as e:
-        print(f"Error reading {file_path}: {e}")
+    if b'size:' in file_path.read_bytes():
+        print(f"[SpineAtlas] {file_path}")
+        return True
     return False
 
 def is_live2d_moc(file_path: Path) -> bool:
-    try:
-        with open(file_path, 'rb') as f:
-            header = f.read(6)
-            if header == b'live2d' or header == b'moc3':
-                print(f"[Live2D Moc] {file_path}")
-                return True
-    except PermissionError:
-        pass
-    except Exception as e:
-        print(f"Error reading {file_path}: {e}")
+    data = file_path.read_bytes()
+    if b'MOC3' in data or b'moc' in data:
+        print(f"[Live2DMoc] {file_path}")
+        return True
     return False
 
 def is_key_word_file(file_path: Path) -> bool:
@@ -93,7 +56,7 @@ def is_key_word_file(file_path: Path) -> bool:
         content = file_path.read_text(encoding="utf-8", errors="ignore").lower()
         for kw in key_words:
             if kw.lower() in content:
-                print(f"[KeyWord] {file_path}")
+                print(f"[KeyWord] {file_path}", f"contains keyword: {kw}")
                 return True
     except Exception as e:
         print(f"Error processing {file_path}: {e}")
