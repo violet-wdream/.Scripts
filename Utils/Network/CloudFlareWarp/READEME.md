@@ -1,4 +1,4 @@
-# execute in github-codespace
+# execute in github-codespace（浏览器）
 chmod +x setup-warp.sh
 ./setup-warp.sh
 
@@ -27,5 +27,16 @@ unzip usque_4.2.1_linux_amd64.zip
 
 # 3. 将 usque 移动到系统路径，方便后续使用
 sudo mv usque /usr/local/bin/
+usque version
+
+# (在本地vscode连接后使用, 不是在浏览器上)
+# 4. 注册
+usque register
+
+# 5. 启动代理
+usque socks -b 0.0.0.0 -p 1080
+
+# 然后在edge上下一个插件SwitchyOmega 
+# 添加情景配置 SOCKS5 localhost 1080 并在插件中启用， 如果连接正常， 相当于挂了个梯子，可以访问youtube之类的。
 
 
