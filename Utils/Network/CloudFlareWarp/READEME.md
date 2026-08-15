@@ -1,3 +1,4 @@
-chmod +x warp.sh
-sudo ./warp.sh wg
-sudo ./warp.sh wg4
+chmod +x setup-warp.sh
+./setup-warp.sh
+
+git add .; git commit -m "add new warp"; git push;
