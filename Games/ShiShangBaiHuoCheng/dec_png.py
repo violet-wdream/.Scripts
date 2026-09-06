@@ -2,6 +2,9 @@ import struct
 from pathlib import Path
 from multiprocessing import Pool, cpu_count
 
+# 时尚百货城 纹理图decrypt
+
+
 ENCRYPTED_MAGIC = b"wbqj"
 key = b"wbqj2021"
 def decrypt_png_data(encrypted: bytes) -> bytes:

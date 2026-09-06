@@ -4,7 +4,6 @@ import json
 from pathlib import Path
 from collections import defaultdict
 
-
 # ---------- Config ----------
 CONFIG_PATH = Path(r"D:\Tools\UsefulTools\MuMu\Shared\Download\resources\config.json")
 INPUT_DIR = Path(r"D:\Tools\UsefulTools\MuMu\Shared\Download\resources\native")
