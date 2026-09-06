@@ -1,9 +1,10 @@
 import os
 import cxxtea # pip install cxxtea
 # https://pypi.org/project/cxxtea/
-INPUT_PATH = r""
-KEY = "mygame!fuck@you~"
-SIGN = b'GenSanaSneG'
+# dec = cxxtea.decrypt(data, sign, key, delta, cut, input_little_endian, output_little_endian)
+INPUT_PATH = r"D:\Tools\UsefulTools\MuMu\Shared\Download\illusionConnectRe\test"
+KEY = "@S#T$O%"
+SIGN = b'@D#P$S%'
 
 def xxtea_decrypt_data(data: bytes, sign, key) -> bytes:
     if data.startswith(sign):
@@ -30,6 +31,7 @@ def xxtea_decrypt_files(directory, sign, key):
                     decrypted_data = cxxtea.decrypt(file_data, sign, key)
                     if decrypted_data is None:
                         print("cxxtea 解密失败")
+                        decrypted_data = file_data
                     with open(filepath, 'wb') as f:
                         f.write(decrypted_data)
             except Exception as e:

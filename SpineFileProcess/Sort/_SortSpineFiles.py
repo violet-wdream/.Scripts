@@ -4,7 +4,8 @@ from SpineFileProcess.Atlas_process import deserialize_atlas
 import subprocess
 
 converter_exe = Path(
-    r"D:\Games\GameUnpackAssets\mymodel\.Scripts\SpineFileProcess\Converter\SpineSkeletonDataConverter.exe")
+    r"D:\Games\GameUnpackAssets\mymodel\.Scripts\SpineFileProcess\Converter\SpineSkeletonDataConverter.exe"
+)
 def convert_skel_to_json(skel_path: Path, json_path: Path):
     if not converter_exe.exists():
         raise FileNotFoundError(f"SpineSkeletonDataConverter.exe not found: {converter_exe}")

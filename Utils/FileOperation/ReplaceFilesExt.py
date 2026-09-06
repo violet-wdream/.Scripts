@@ -2,9 +2,9 @@
 import os
 
 # ====== 配置区 ======
-INPUT_PATH = r"D:\Tools\UsefulTools\MuMu\Shared\Download\assets\illusts"
-SrcEXT = ".rgba4444.png"      # 源扩展名（可包含多个点）
-DstEXT = ".png"                # 目标扩展名
+INPUT_PATH = r"D:\Tools\UsefulTools\MuMu\Shared\Download\resources\output"
+SrcEXT = ".bin"      # 源扩展名（可包含多个点）
+DstEXT = ".skel"                # 目标扩展名
 DRY_RUN = False
 # ====================
 

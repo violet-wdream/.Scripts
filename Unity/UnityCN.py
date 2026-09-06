@@ -1,20 +1,20 @@
 import os
 import UnityPy
 
-key_hex = "3531342f776564736a6a686662233076"
-input_dir = r"C:\Users\86182\Downloads\momentris\file\tes"
-output_dir = r"C:\Users\86182\Downloads\momentris\file\output"
+key_hex = "64313131383539633334346134363765"
+input_dir = r"C:\Users\86182\Downloads\TEMP\test"
+output_dir = r"C:\Users\86182\Downloads\TEMP\output"
 
 key_bytes = bytes.fromhex(key_hex)
 UnityPy.set_assetbundle_decrypt_key(key_bytes)
 
-def strip_fake_header(data: bytes) -> bytes:
+def strip_fake_header(_data: bytes) -> bytes:
     magic = b"UnityFS"
-    index = data[:0x2000].find(magic)
+    index = _data[:0x2000].find(magic)
     if index > 0:
         print(f"[AutoStrip] Offset 0x{index:X}")
-        return data[index:]
-    return data
+        return _data[index:]
+    return _data
 
 
 for root, _, files in os.walk(input_dir):

@@ -65,7 +65,7 @@ if __name__ == '__main__':
     print(f"压缩结果: {compress(uuid36)}")
 
     # 解压
-    uuid22 = "00C9f/xZ7HaxPE07ytJebS"
+    uuid22 = "a9gRG/jpVA7rf6TAOLTWaO"
     print(f"解压结果: {decompress(uuid22)}")
 
 

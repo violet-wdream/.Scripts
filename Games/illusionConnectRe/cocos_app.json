@@ -1,0 +1,19 @@
+{
+  "osPlatform": "android",
+  "bugTracerAppId": "2d9beca1ed",
+  "errorUrl": "http://192.168.1.14:10000/global/release_180116_01/index.php/gsapi/statist/clientBugReport",
+  "showGameFPS": 0,
+  "runMode": "PROD",
+  "settingTableName": "app_setting",
+  "stageUrl": "http://dc-mjlj.sugargame.hk",
+  "packJobId": 17040,
+  "resTableName": "assets",
+  "platform": "America",
+  "game": "or",
+  "showDebugBox": 0,
+  "captainUrl": "http://vms-mjlj.sugargame.hk/vmsw",
+  "enableBugTracer": true,
+  "forceCreate": true,
+  "showLuaError": 0,
+  "developer": "Copyright(C),2017,DragonPunchStorm Tech.Co.,Ltd."
+}
