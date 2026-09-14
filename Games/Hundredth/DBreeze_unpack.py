@@ -27,7 +27,7 @@ PATTERN_RE = re.compile(
 
 #1. utxt - model/exp
 # 75 74 78 74 utxt.l2d.path.name.model / utxt.l2d.path.name.exp -> 导出为 ./l2d/path/name.model.json 或者 name.exp.json
-# 名称结束后紧跟着 ’{‘ 开始的 json 明文, 需要去掉中间填充的非法字符, 以'}' 结束
+# 名称结束后紧跟着 '{' 开始的 json 明文, 需要去掉中间填充的非法字符, 以'}' 结束
 
 #2. ubin - mtn
 # 75 62 69 6E ubin.l2d.path.name.mtn -> 导出为 ./l2d/path/name.mtn
