@@ -3,8 +3,8 @@
 import shutil
 from pathlib import Path
 
-INPUT_PATH = r"D:\Tools\UsefulTools\MuMu\Shared\Download\resources\output\zh\spine"
-DRYRUN = True
+INPUT_PATH = r"E:\DocFiles\GameUnpackAssets\mymodel\Spine\illusionConnectRe\spines"
+DRYRUN = False
 
 
 def atlas_pngs(atlas):

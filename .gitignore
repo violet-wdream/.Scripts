@@ -42,6 +42,7 @@ zafrida-logs
 *.unity3d
 *.bundle
 *.assetbundle
+*.db
 
 # Temporary Files
 *.tmp

@@ -7,7 +7,7 @@ from pathlib import Path
 # === 配置项 ===
 # True = 仅显示操作，不执行任何移动操作 (建议先使用 DRYRUN 模式！)
 # False = 实际执行文件移动
-INPUT_PATH = r"D:\Tools\UsefulTools\MuMu\Shared\Download\NvWuShenQiYue\native"
+INPUT_PATH = r"D:\Tools\UsefulTools\MuMu\Shared\Download\illusionConnectRe\output\asset\heros"
 DRYRUN = False
 
 # 提取文件存放的目标目录名称 
