@@ -1,9 +1,9 @@
 import ctypes
 from pathlib import Path
 import os
+# 用于解析moc3文件,  得到 ParameterIDs 和 PartIDs
 
-
-INPUT_MOC3 = r"C:\Users\86182\Downloads\test\Output\Yao_4\Yao_4.moc3"
+INPUT_MOC3 = r"C:\Users\86182\Downloads\TEMP\output\Vautour_2_sample\Vautour_2.moc3"
 
 os.add_dll_directory(
     r"D:\SteamLibrary\steamapps\common\Live2DViewerEX\bin\lw\lw_Data\Plugins\x86_64"
