@@ -1,4 +1,5 @@
-# 2026-11-11
+# 2026-11-11 版本 ptn live2d提取
+# https://live2dhub.com/t/topic/6005/21
 #!/usr/bin/env python3
 """PTN Live2D batch exporter.
 
